@@ -1,4 +1,4 @@
-let pressCount = 0
+let pressCount = 1
 
 function randomizeSeats() {
     const studentNames = [];
@@ -9,7 +9,7 @@ function randomizeSeats() {
     }
 
     const keo = "keo matsura"
-    const andrew = "andrew borlin"
+    const andrew = "aa"
     const alayna = "alayna foster"
 
     let indexKeo = studentNames.indexOf(keo)
