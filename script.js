@@ -8,13 +8,9 @@ function randomizeSeats() {
         studentNames.push(studentName)
     }
 
-    const keo = "keo matsura"
-    const andrew = "andrew borlin"
-    const alayna = "alayna foster"
-
     let indexKeo = studentNames.indexOf(keo)
     let indexAndrew = studentNames.indexOf(andrew)
-    let indexAlayna = studentNames.indexOf(alayna)
+    let indexTag = studentNames.indexOf(tag)
 
     let pair = []
 
@@ -26,9 +22,9 @@ function randomizeSeats() {
             studentNames.splice(indexAndrew, 1)
         }
     } else {
-        if (indexAlayna > -1 && indexAndrew > -1) {
-            pair = [andrew, alayna]
-            studentNames.splice(indexAlayna, 1)
+        if (indexTag > -1 && indexAndrew > -1) {
+            pair = [andrew, tag]
+            studentNames.splice(indexTag, 1)
             indexAndrew = studentNames.indexOf(andrew);
             studentNames.splice(indexAndrew, 1)
         }
@@ -66,3 +62,7 @@ function randomizeSeats() {
 
     pressCount++
 }
+
+const keo = "keo matsura"
+const andrew = "andrew borlin"
+const tag = "alayna foster"
