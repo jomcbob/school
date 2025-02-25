@@ -17,67 +17,56 @@ function randomizeSeats() {
     let indexJacob = studentNames.indexOf(jacobMyer);
     let indexVaughn = studentNames.indexOf(vaughnLind);
     let indexNia = studentNames.indexOf(niaBorlin);
+    let indexHudson = studentNames.indexOf(hudsonTyger);
+    let indexBrielle = studentNames.indexOf(brielleFoster);
 
     let pair = [];
 
     // Step 1: Try to pair Andrew with higher probability students (Keo, Alayna, Jenna)
-    if (pressCount % 2 === 0) {
-        if (indexAlayna > -1 && indexAndrew > -1 && Math.random() < 0.2) {
+    if (pressCount % 2 === 0 && pair.length === 0) { // Only attempt pairing if Andrew hasn't been paired yet
+        if (indexAlayna > -1 && indexAndrew > -1 && Math.random() < 0.25) { // Adjusted probability for Alayna
             pair = [andrew, alayna];
-            studentNames.splice(indexAlayna, 1);  // Remove Alayna from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
-        } else if (indexJenna > -1 && indexAndrew > -1 && Math.random() < 0.4) {
+        } else if (indexJenna > -1 && indexAndrew > -1 && Math.random() < 0.89) { // Adjusted probability for Jenna
             pair = [andrew, jennaKauer];
-            studentNames.splice(indexJenna, 1);  // Remove Jenna from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
-        } else if (indexKeo > -1 && indexAndrew > -1 && Math.random() < 0.3) {
+        } else if (indexKeo > -1 && indexAndrew > -1 && Math.random() < 0.3) { // Increased probability for Keo
             pair = [andrew, keo];
-            studentNames.splice(indexKeo, 1);  // Remove Keo from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
         }
     }
 
-    // Step 2: If Andrew is not yet paired, try to pair him with lower probability students (Tag, Jacob, Vaughn, Nia)
+    // Step 2: If Andrew is not yet paired, try to pair him with lower probability students (Hudson, Brielle, Tag, Jacob, Vaughn, Nia)
     if (pair.length === 0) {
-        if (Math.random() < 0.025 && indexTag > -1 && indexAndrew > -1) {
+        if (Math.random() < 0.05 && indexHudson > -1 && indexAndrew > -1) {
+            pair = [andrew, hudsonTyger];
+        } else if (Math.random() < 0.05 && indexBrielle > -1 && indexAndrew > -1) {
+            pair = [andrew, brielleFoster];
+        } else if (Math.random() < 0.05 && indexTag > -1 && indexAndrew > -1) {
             pair = [andrew, tagCraven];
-            studentNames.splice(indexTag, 1);  // Remove Tag from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
-        } else if (Math.random() < 0.025 && indexJacob > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.05 && indexJacob > -1 && indexAndrew > -1) {
             pair = [andrew, jacobMyer];
-            studentNames.splice(indexJacob, 1);  // Remove Jacob from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
-        } else if (Math.random() < 0.025 && indexVaughn > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.05 && indexVaughn > -1 && indexAndrew > -1) {
             pair = [andrew, vaughnLind];
-            studentNames.splice(indexVaughn, 1);  // Remove Vaughn from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
-        } else if (Math.random() < 0.025 && indexNia > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.05 && indexNia > -1 && indexAndrew > -1) {
             pair = [andrew, niaBorlin];
-            studentNames.splice(indexNia, 1);  // Remove Nia from the list
-            indexAndrew = studentNames.indexOf(andrew);
-            studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
         }
     }
 
-    // Step 3: If Andrew hasn't been paired yet, always pair him with Alayna
+    // Step 3: If Andrew hasn't been paired yet, always pair him with Alayna, but only if no other pairing found
     if (pair.length === 0 && indexAlayna > -1 && indexAndrew > -1) {
         pair = [andrew, alayna];
-        studentNames.splice(indexAlayna, 1);  // Remove Alayna from the list
-        indexAndrew = studentNames.indexOf(andrew);
-        studentNames.splice(indexAndrew, 1);  // Remove Andrew from the list
     }
 
-    // Step 4: Shuffle remaining students
-    const shuffledNames = [...studentNames];
-    for (let i = shuffledNames.length - 1; i > 0; i--) {
+    // Step 4: Shuffle remaining students (excluding paired ones)
+    const remainingStudents = [...studentNames];
+    if (pair.length > 0) {
+        // Remove paired students from remaining students list
+        remainingStudents.splice(remainingStudents.indexOf(pair[0]), 1);
+        remainingStudents.splice(remainingStudents.indexOf(pair[1]), 1);
+    }
+
+    // Shuffle remaining students
+    for (let i = remainingStudents.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffledNames[i], shuffledNames[j]] = [shuffledNames[j], shuffledNames[i]];
+        [remainingStudents[i], remainingStudents[j]] = [remainingStudents[j], remainingStudents[i]];
     }
 
     const validHorizontalPairs = [
@@ -96,14 +85,14 @@ function randomizeSeats() {
         let insertPosition1 = selectedPair[0] - 1;
         let insertPosition2 = selectedPair[1] - 1;
 
-        shuffledNames.splice(insertPosition1, 0, pair[0]);
-        shuffledNames.splice(insertPosition2, 0, pair[1]);
+        remainingStudents.splice(insertPosition1, 0, pair[0]);
+        remainingStudents.splice(insertPosition2, 0, pair[1]);
     }
 
     // Step 6: Fill remaining desks
     for (let i = 1; i <= 36; i++) {
         const desk = document.getElementById(`seat${i}`);
-        desk.textContent = shuffledNames[i - 1];
+        desk.textContent = remainingStudents[i - 1];
     }
 
     pressCount++;
@@ -117,3 +106,5 @@ const jennaKauer = "jenna kauer";
 const jacobMyer = "jacob myer";
 const vaughnLind = "vaughn lind";
 const niaBorlin = "nia borlin";
+const hudsonTyger = "hudson tyger";
+const brielleFoster = "brielle foster";

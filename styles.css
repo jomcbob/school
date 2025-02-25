@@ -1,17 +1,28 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    /* justify-content: space-between; */
     align-items: center;
-    margin-top: 20px;
     height: 100vh;
     overflow: hidden;
+    margin: 10px;
+}
+
+h2{
+    margin-left: 10vw;
+}
+
+.teacher{
+    width: 100vw;
+    display: flex;
+    justify-content: start;
 }
 
 .container {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
     width: 100%;
 }
 
