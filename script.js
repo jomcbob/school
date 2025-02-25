@@ -9,7 +9,7 @@ function randomizeSeats() {
     }
 
     const keo = "keo matsura"
-    const andrew = "aa"
+    const andrew = "andrew borlin"
     const alayna = "alayna foster"
 
     let indexKeo = studentNames.indexOf(keo)
