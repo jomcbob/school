@@ -1,3 +1,5 @@
+let count = 1
+
 function randomizeSeats() {
     const studentNames = [];
 
@@ -22,30 +24,27 @@ function randomizeSeats() {
     let pair = []
 
     if (pair.length === 0) {
-        if (indexfriend3 > -1 && indexAndrew > -1 && Math.random() < 0.5) {
+        if (count === 1 && indexfriend3 > -1 && indexAndrew > -1) {
             pair = [andrew, friend3]
-        } else if (indexfriend4 > -1 && indexAndrew > -1 && Math.random() < 0.6) {
+        } else if (count === 2 && indexfriend4 > -1 && indexAndrew > -1) {
             pair = [andrew, friend4]
-        } else if (indexfriend1 > -1 && indexAndrew > -1 && Math.random() < 0.3) {
-            pair = [andrew, friend1]
-        }
-    }
-    if (pair.length === 0) {
-        if (Math.random() < 0.05 && indexfriend8 > -1 && indexAndrew > -1) {
-            pair = [andrew, friend8]
-        } else if (Math.random() < 0.4 && indexfriend9 > -1 && indexAndrew > -1) {
+        } else if (count === 3 && indexfriend9 > -1 && indexAndrew > -1) {
             pair = [andrew, friend9]
-        } else if (Math.random() < 0.05 && indexfriend2 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.3 && indexfriend1 > -1 && indexAndrew > -1) {
+            pair = [andrew, friend1]
+        } else if (Math.random() < 0.005 && indexfriend8 > -1 && indexAndrew > -1) {
+            pair = [andrew, friend8]
+        } else if (Math.random() < 0.1 && indexfriend2 > -1 && indexAndrew > -1) {
             pair = [andrew, friend2]
-        } else if (Math.random() < 0.05 && indexfriend5 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.1 && indexfriend5 > -1 && indexAndrew > -1) {
             pair = [andrew, friend5]
-        } else if (Math.random() < 0.05 && indexfriend6 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.1 && indexfriend6 > -1 && indexAndrew > -1) {
             pair = [andrew, friend6]
-        } else if (Math.random() < 0.05 && indexfriend7 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.1 && indexfriend7 > -1 && indexAndrew > -1) {
             pair = [andrew, friend7]
-        } else if (Math.random() < 0.1 && indexfriend10 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.9 && indexfriend10 > -1 && indexAndrew > -1) {
             pair = [andrew, friend10]
-        } else if (Math.random() < 0.05 && indexfriend11 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 1.1 && indexfriend11 > -1 && indexAndrew > -1) {
             pair = [andrew, friend11]
         }
     }
@@ -92,6 +91,10 @@ function randomizeSeats() {
     }
 
     saveDeskContentsToLocalStorage()
+    if (count <= 3){
+        count++
+    } else count = 1
+
 }
 
 function sortSeatsAlphabetically() {

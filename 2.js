@@ -8,7 +8,7 @@ function randomizeSeats() {
         studentNames.push(studentName);
     }
 
-    // Randomly shuffle the remaining students
+    // Randomly shuffle the students
     let remainingStudents = [...studentNames];
     for (let i = remainingStudents.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -32,7 +32,7 @@ function saveDeskContentsToLocalStorage() {
         const desk = document.getElementById(`seat${i}`);
         deskContents.push(desk.textContent.trim());
     }
-    localStorage.setItem('deskContents', JSON.stringify(deskContents));
+    localStorage.setItem('deskContents', JSON.stringify(deskContents))
 }
 
 // Load desk contents from local storage
