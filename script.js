@@ -24,13 +24,13 @@ function randomizeSeats() {
     let pair = []
 
     if (pair.length === 0) {
-        if (count === 1 && indexfriend3 > -1 && indexAndrew > -1) {
+        if (count === 1 || count === 5 && indexfriend3 > -1 && indexAndrew > -1) {
             pair = [andrew, friend3]
-        } else if (count === 2 && indexfriend4 > -1 && indexAndrew > -1) {
+        } else if (count === 2 || count === 4 && indexfriend4 > -1 && indexAndrew > -1) {
             pair = [andrew, friend4]
-        } else if (count === 3 && indexfriend9 > -1 && indexAndrew > -1) {
+        } else if (count === 3 || count === 6 && indexfriend9 > -1 && indexAndrew > -1) {
             pair = [andrew, friend9]
-        } else if (Math.random() < 0.3 && indexfriend1 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.5 && indexfriend1 > -1 && indexAndrew > -1) {
             pair = [andrew, friend1]
         } else if (Math.random() < 0.005 && indexfriend8 > -1 && indexAndrew > -1) {
             pair = [andrew, friend8]
@@ -38,7 +38,7 @@ function randomizeSeats() {
             pair = [andrew, friend2]
         } else if (Math.random() < 0.1 && indexfriend5 > -1 && indexAndrew > -1) {
             pair = [andrew, friend5]
-        } else if (Math.random() < 0.1 && indexfriend6 > -1 && indexAndrew > -1) {
+        } else if (Math.random() < 0.3 && indexfriend6 > -1 && indexAndrew > -1) {
             pair = [andrew, friend6]
         } else if (Math.random() < 0.1 && indexfriend7 > -1 && indexAndrew > -1) {
             pair = [andrew, friend7]
@@ -91,7 +91,7 @@ function randomizeSeats() {
     }
 
     saveDeskContentsToLocalStorage()
-    if (count <= 3){
+    if (count <= 6){
         count++
     } else count = 1
 
@@ -127,6 +127,11 @@ function sortSeatsAlphabetically() {
             saveDeskContentsToLocalStorage()
         }
     }
+    if (Math.random() < 0.5){
+        return count = 1
+    } else if (Math.random() < 0.5) {
+        return count = 2
+    } else count = 7
 }
 
 
