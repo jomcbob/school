@@ -23,9 +23,9 @@ function randomizeSeats() {
     let pair = []
 
     if (pressCount % 2 === 0 && pair.length === 0) {
-        if (indexAlayna > -1 && indexAndrew > -1 && Math.random() < 0.4) {
+        if (indexAlayna > -1 && indexAndrew > -1 && Math.random() < 0.3) {
             pair = [andrew, friend3]
-        } else if (indexJenna > -1 && indexAndrew > -1 && Math.random() < 0.5) {
+        } else if (indexJenna > -1 && indexAndrew > -1 && Math.random() < 0.7) {
             pair = [andrew, friend4]
         } else if (indexKeo > -1 && indexAndrew > -1 && Math.random() < 0.3) {
             pair = [andrew, friend1]
