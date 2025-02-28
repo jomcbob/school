@@ -1,11 +1,12 @@
-let count = 1
+let count = 1;
 
 function randomizeSeats() {
     const studentNames = [];
 
     for (let i = 1; i <= 36; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim().toLowerCase()
-        studentNames.push(studentName)
+        const studentName = document.getElementById(`name${i}`).value.trim();
+        const formattedName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase();
+        studentNames.push(formattedName);
     }
 
     let indexfriend1 = studentNames.indexOf(friend1)
@@ -23,14 +24,14 @@ function randomizeSeats() {
 
     let pair = []
 
-    if (pair.length === 0) {
-        if (count === 1 || count === 5 && indexfriend3 > -1 && indexAndrew > -1) {
+    if (pair.length === 0 && indexAndrew > -1) {
+        if (count === 1 || count === 6 && indexfriend3 > -1 && indexAndrew > -1) {
             pair = [andrew, friend3]
         } else if (count === 2 || count === 4 && indexfriend4 > -1 && indexAndrew > -1) {
             pair = [andrew, friend4]
-        } else if (count === 3 || count === 6 && indexfriend9 > -1 && indexAndrew > -1) {
+        } else if (count === 3  && indexfriend9 > -1 && indexAndrew > -1) {
             pair = [andrew, friend9]
-        } else if (Math.random() < 0.5 && indexfriend1 > -1 && indexAndrew > -1) {
+        } else if (count === 5 || Math.random() < 0.5 && indexfriend1 > -1 && indexAndrew > -1) {
             pair = [andrew, friend1]
         } else if (Math.random() < 0.005 && indexfriend8 > -1 && indexAndrew > -1) {
             pair = [andrew, friend8]
@@ -91,10 +92,9 @@ function randomizeSeats() {
     }
 
     saveDeskContentsToLocalStorage()
-    if (count <= 6){
+    if (count <= 6) {
         count++
     } else count = 1
-
 }
 
 function sortSeatsAlphabetically() {
@@ -127,16 +127,12 @@ function sortSeatsAlphabetically() {
             saveDeskContentsToLocalStorage()
         }
     }
-    if (Math.random() < 0.5){
+    if (Math.random() < 0.5) {
         return count = 1
     } else if (Math.random() < 0.5) {
         return count = 2
     } else count = 7
 }
-
-
-
-
 
 function saveDeskContentsToLocalStorage() {
     let deskContents = [];
@@ -161,15 +157,15 @@ window.onload = function() {
     loadDeskContentsFromLocalStorage()
 }
 
-const andrew = "andrew borlin"
-const friend1 = "keo matsura"
-const friend2 = "tag craven"
-const friend3 = "alayna foster"
-const friend4 = "jenna kauer"
-const friend5 = "jacob myer"
-const friend6 = "vaughn lind"
-const friend7 = "nia borlin"
-const friend8 = "hudson tyger"
-const friend9 = "brielle foster"
-const friend10 = "karli richardson"
-const friend11 = "chloe richardson"
+const andrew = "Andrew borlin";
+const friend1 = "Keo matsura";
+const friend2 = "Tag craven";
+const friend3 = "Alayna foster";
+const friend4 = "Jenna kauer";
+const friend5 = "Jacob myer";
+const friend6 = "Vaughn lind";
+const friend7 = "Nia borlin";
+const friend8 = "Hudson tyger";
+const friend9 = "Brielle foster";
+const friend10 = "Karli richardson";
+const friend11 = "Chloe richardson";

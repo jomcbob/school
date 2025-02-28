@@ -58,7 +58,7 @@ function sortSeatsAlphabetically() {
 
     // Collect all student names from input fields
     for (let i = 1; i <= totalSeats; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim();
+        const studentName = document.getElementById(`name${i}`).value.trim().toLowerCase();
         if (studentName) {
             desks.push(studentName);
         }
