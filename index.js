@@ -49,6 +49,24 @@ function loadDeskContentsFromLocalStorage() {
 // Load saved desk contents when the page loads
 window.onload = function() {
     loadDeskContentsFromLocalStorage();
+
+    // Add event listeners to input fields
+    for (let i = 1; i <= 36; i++) {
+        const inputField = document.getElementById(`name${i}`);
+        inputField.addEventListener('input', function() {
+            saveStudentNamesToLocalStorage();
+        });
+    }
+}
+
+// Save student names to local storage whenever an input is modified
+function saveStudentNamesToLocalStorage() {
+    const studentNames = [];
+    for (let i = 1; i <= 36; i++) {
+        const studentName = document.getElementById(`name${i}`).value.trim().toLowerCase();
+        studentNames.push(studentName);
+    }
+    localStorage.setItem('studentNames', JSON.stringify(studentNames));
 }
 
 // Sort seats alphabetically and assign them to desks
