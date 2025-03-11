@@ -169,6 +169,43 @@ function loadStudentNamesFromLocalStorage() {
     }
 }
 
+function sortSeatsAlphabetically() {
+    const desks = [];
+    const totalSeats = 36
+
+    for (let i = 1; i <= totalSeats; i++) {
+        const studentName = document.getElementById(`name${i}`).value.trim()
+        if (studentName) {
+            desks.push(studentName);
+        }
+    }
+
+    desks.sort()
+    const rows = 6
+    const cols = 6
+    let deskIndex = 0
+
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            const seatIndex = row * cols + col + 1
+            const desk = document.getElementById(`seat${seatIndex}`)
+
+            if (deskIndex < desks.length) {
+                desk.textContent = desks[deskIndex]
+                deskIndex++;
+            } else {
+                desk.textContent = ''
+            }
+            saveDeskContentsToLocalStorage()
+        }
+    }
+    if (Math.random() < 0.5) {
+        return count = 1
+    } else if (Math.random() < 0.5) {
+        return count = 2
+    } else count = 7
+}
+
 window.onload = function() {
     loadDeskContentsFromLocalStorage();
     loadStudentNamesFromLocalStorage();
