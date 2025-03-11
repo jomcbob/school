@@ -162,24 +162,31 @@ function sortSeatsAlphabetically() {
 
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-            const seatIndex = row * cols + col + 1
-            const desk = document.getElementById(`seat${seatIndex}`)
-
+            const seatIndex = row * cols + col + 1;
+            const desk = document.getElementById(`seat${seatIndex}`);
+    
             if (deskIndex < desks.length) {
-                desk.textContent = desks[deskIndex]
-                deskIndex++
+                // Capitalize the first letter of each name
+                const studentName = desks[deskIndex];
+                const formattedName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase();
+                desk.textContent = formattedName;
+                deskIndex++;
             } else {
-                desk.textContent = ''
+                desk.textContent = '';
             }
-            saveDeskContentsToLocalStorage()
+            saveDeskContentsToLocalStorage();
         }
     }
-}
+}    
 
 window.onload = function() {
     loadDeskContentsFromLocalStorage()
     loadStudentNamesFromLocalStorage()
 }
+
+setTimeout(function() {
+    window.location.reload()
+}, 5000 * 10)
 
 const andrew = "Andrew borlin"
 const friend1 = "Keo matsura"
@@ -190,6 +197,6 @@ const friend5 = "Jacob myer"
 const friend6 = "Vaughn lind"
 const friend7 = "Nia borlin"
 const friend8 = "Hudson tyger"
-const friend9 = "Brielle foster"
+const friend9 = "Jacob myer"
 const friend10 = "Karli richardson"
 const friend11 = "Chloe richardson"
