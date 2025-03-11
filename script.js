@@ -1,20 +1,5 @@
-let count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 1;
+let count = 1
 
-// Initialize your friend names
-const andrew = "Andrew borlin";
-const friend1 = "Keo matsura";
-const friend2 = "Tag craven";
-const friend3 = "Alayna foster";
-const friend4 = "Jenna kauer";
-const friend5 = "Jacob myer";
-const friend6 = "Vaughn lind";
-const friend7 = "Nia borlin";
-const friend8 = "Hudson tyger";
-const friend9 = "Brielle foster";
-const friend10 = "Karli richardson";
-const friend11 = "Chloe richardson";
-
-// Event listener to save names in real-time as they are typed
 function saveNamesAsTyped() {
     const studentNames = [];
     for (let i = 1; i <= 36; i++) {
@@ -24,7 +9,6 @@ function saveNamesAsTyped() {
     localStorage.setItem('studentNames', JSON.stringify(studentNames));
 }
 
-// Attach the event listener to each input field
 for (let i = 1; i <= 36; i++) {
     const inputField = document.getElementById(`name${i}`);
     inputField.addEventListener('input', saveNamesAsTyped);
@@ -33,80 +17,74 @@ for (let i = 1; i <= 36; i++) {
 function randomizeSeats() {
     const studentNames = [];
 
-    // Collect student names from input fields
     for (let i = 1; i <= 36; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim();
-        const formattedName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase();
-        studentNames.push(formattedName);
+        const studentName = document.getElementById(`name${i}`).value.trim()
+        const formattedName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase()
+        studentNames.push(formattedName)
     }
 
-    // Pairing friends with Andrew based on count value
-    let pair = [];
+    let pair = []
 
-    let indexfriend1 = studentNames.indexOf(friend1);
-    let indexAndrew = studentNames.indexOf(andrew);
-    let indexfriend2 = studentNames.indexOf(friend2);
-    let indexfriend3 = studentNames.indexOf(friend3);
-    let indexfriend4 = studentNames.indexOf(friend4);
-    let indexfriend5 = studentNames.indexOf(friend5);
-    let indexfriend6 = studentNames.indexOf(friend6);
-    let indexfriend7 = studentNames.indexOf(friend7);
-    let indexfriend8 = studentNames.indexOf(friend8);
-    let indexfriend9 = studentNames.indexOf(friend9);
-    let indexfriend10 = studentNames.indexOf(friend10);
-    let indexfriend11 = studentNames.indexOf(friend11);
+    let indexfriend1 = studentNames.indexOf(friend1)
+    let indexAndrew = studentNames.indexOf(andrew)
+    let indexfriend2 = studentNames.indexOf(friend2)
+    let indexfriend3 = studentNames.indexOf(friend3)
+    let indexfriend4 = studentNames.indexOf(friend4)
+    let indexfriend5 = studentNames.indexOf(friend5)
+    let indexfriend6 = studentNames.indexOf(friend6)
+    let indexfriend7 = studentNames.indexOf(friend7)
+    let indexfriend8 = studentNames.indexOf(friend8)
+    let indexfriend9 = studentNames.indexOf(friend9)
+    let indexfriend10 = studentNames.indexOf(friend10)
+    let indexfriend11 = studentNames.indexOf(friend11)
 
-    // If Andrew exists, create pairs with the logic you defined
     if (indexAndrew > -1) {
         if (pair.length === 0) {
             if (count === 1 || (count === 6 && indexfriend3 > -1 && indexAndrew > -1)) {
-                pair = [andrew, friend3];
+                pair = [andrew, friend3]
             } else if (count === 2 || (count === 4 && indexfriend4 > -1 && indexAndrew > -1)) {
-                pair = [andrew, friend4];
+                pair = [andrew, friend4]
             } else if (count === 3 && indexfriend9 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend9];
+                pair = [andrew, friend9]
             } else if (count === 5 || (Math.random() < 0.5 && indexfriend1 > -1 && indexAndrew > -1)) {
-                pair = [andrew, friend1];
+                pair = [andrew, friend1]
             } else if (Math.random() < 0.005 && indexfriend8 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend8];
+                pair = [andrew, friend8]
             } else if (Math.random() < 0.1 && indexfriend2 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend2];
+                pair = [andrew, friend2]
             } else if (Math.random() < 0.1 && indexfriend5 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend5];
+                pair = [andrew, friend5]
             } else if (Math.random() < 0.3 && indexfriend6 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend6];
+                pair = [andrew, friend6]
             } else if (Math.random() < 0.1 && indexfriend7 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend7];
+                pair = [andrew, friend7]
             } else if (Math.random() < 0.9 && indexfriend10 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend10];
+                pair = [andrew, friend10]
             } else if (Math.random() < 1.1 && indexfriend11 > -1 && indexAndrew > -1) {
-                pair = [andrew, friend11];
+                pair = [andrew, friend11]
             }
         }
 
         if (pair.length === 0) {
             if (indexfriend4 > -1) {
-                pair = [andrew, friend4];
+                pair = [andrew, friend4]
             } else if (indexfriend3 > -1) {
-                pair = [andrew, friend3];
+                pair = [andrew, friend3]
             }
         }
     }
 
-    // Remove the paired students from the list of remaining students
     const remainingStudents = [...studentNames];
     if (pair.length > 0) {
-        remainingStudents.splice(remainingStudents.indexOf(pair[0]), 1);
-        remainingStudents.splice(remainingStudents.indexOf(pair[1]), 1);
+        remainingStudents.splice(remainingStudents.indexOf(pair[0]), 1)
+        remainingStudents.splice(remainingStudents.indexOf(pair[1]), 1)
     }
 
-    // Shuffle the remaining students
     for (let i = remainingStudents.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [remainingStudents[i], remainingStudents[j]] = [remainingStudents[j], remainingStudents[i]];
+        [remainingStudents[i], remainingStudents[j]] = [remainingStudents[j], remainingStudents[i]]
     }
 
-    // Valid horizontal seat pairs
     const validHorizontalPairs = [
         [1, 2], [3, 4], [5, 6],
         [7, 8], [9, 10], [11, 12],
@@ -114,57 +92,54 @@ function randomizeSeats() {
         [19, 20], [21, 22], [23, 24],
         [25, 26], [27, 28], [29, 30],
         [31, 32], [33, 34], [35, 36]
-    ];
+    ]
 
-    // If there is a pair, insert them into a random seat pair
     if (pair.length > 0) {
-        const selectedPair = validHorizontalPairs[Math.floor(Math.random() * validHorizontalPairs.length)];
-        let insertPosition1 = selectedPair[0] - 1;
-        let insertPosition2 = selectedPair[1] - 1;
+        const selectedPair = validHorizontalPairs[Math.floor(Math.random() * validHorizontalPairs.length)]
+        let insertPosition1 = selectedPair[0] - 1
+        let insertPosition2 = selectedPair[1] - 1
 
-        remainingStudents.splice(insertPosition1, 0, pair[0]);
-        remainingStudents.splice(insertPosition2, 0, pair[1]);
+        remainingStudents.splice(insertPosition1, 0, pair[0])
+        remainingStudents.splice(insertPosition2, 0, pair[1])
     }
 
-    // Update the seat assignments
     for (let i = 1; i <= 36; i++) {
-        const desk = document.getElementById(`seat${i}`);
-        desk.textContent = remainingStudents[i - 1];
+        const desk = document.getElementById(`seat${i}`)
+        desk.textContent = remainingStudents[i - 1]
     }
 
-    // Save the desk contents and student names to local storage
-    saveDeskContentsToLocalStorage();
+    saveDeskContentsToLocalStorage()
     
-    // Update and save count
-    count = (count <= 6) ? count + 1 : 1;
-    localStorage.setItem('count', count);
+    if (count <= 6) {
+        count++
+    } else count = 1
 }
 
 function saveDeskContentsToLocalStorage() {
-    let deskContents = [];
+    let deskContents = []
     for (let i = 1; i <= 36; i++) {
-        const desk = document.getElementById(`seat${i}`);
-        deskContents.push(desk.textContent.trim());
+        const desk = document.getElementById(`seat${i}`)
+        deskContents.push(desk.textContent.trim())
     }
-    localStorage.setItem('deskContents', JSON.stringify(deskContents));
+    localStorage.setItem('deskContents', JSON.stringify(deskContents))
 }
 
 function loadDeskContentsFromLocalStorage() {
-    const savedDeskContents = JSON.parse(localStorage.getItem('deskContents'));
+    const savedDeskContents = JSON.parse(localStorage.getItem('deskContents'))
     if (savedDeskContents) {
         for (let i = 1; i <= 36; i++) {
-            const desk = document.getElementById(`seat${i}`);
-            desk.textContent = savedDeskContents[i - 1] || '';
+            const desk = document.getElementById(`seat${i}`)
+            desk.textContent = savedDeskContents[i - 1] || ''
         }
     }
 }
 
 function loadStudentNamesFromLocalStorage() {
-    const savedStudentNames = JSON.parse(localStorage.getItem('studentNames'));
+    const savedStudentNames = JSON.parse(localStorage.getItem('studentNames'))
     if (savedStudentNames) {
         for (let i = 1; i <= 36; i++) {
-            const inputField = document.getElementById(`name${i}`);
-            inputField.value = savedStudentNames[i - 1] || '';
+            const inputField = document.getElementById(`name${i}`)
+            inputField.value = savedStudentNames[i - 1] || ''
         }
     }
 }
@@ -176,7 +151,7 @@ function sortSeatsAlphabetically() {
     for (let i = 1; i <= totalSeats; i++) {
         const studentName = document.getElementById(`name${i}`).value.trim()
         if (studentName) {
-            desks.push(studentName);
+            desks.push(studentName)
         }
     }
 
@@ -192,21 +167,29 @@ function sortSeatsAlphabetically() {
 
             if (deskIndex < desks.length) {
                 desk.textContent = desks[deskIndex]
-                deskIndex++;
+                deskIndex++
             } else {
                 desk.textContent = ''
             }
             saveDeskContentsToLocalStorage()
         }
     }
-    if (Math.random() < 0.5) {
-        return count = 1
-    } else if (Math.random() < 0.5) {
-        return count = 2
-    } else count = 7
 }
 
 window.onload = function() {
-    loadDeskContentsFromLocalStorage();
-    loadStudentNamesFromLocalStorage();
-};
+    loadDeskContentsFromLocalStorage()
+    loadStudentNamesFromLocalStorage()
+}
+
+const andrew = "Andrew borlin"
+const friend1 = "Keo matsura"
+const friend2 = "Tag craven"
+const friend3 = "Alayna foster"
+const friend4 = "Jenna kauer"
+const friend5 = "Jacob myer"
+const friend6 = "Vaughn lind"
+const friend7 = "Nia borlin"
+const friend8 = "Hudson tyger"
+const friend9 = "Brielle foster"
+const friend10 = "Karli richardson"
+const friend11 = "Chloe richardson"
