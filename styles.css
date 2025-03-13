@@ -1,12 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
-    /* justify-content: space-between; */
     align-items: center;
     height: 100vh;
     overflow: hidden;
     margin: 10px;
+    flex-direction: column;
 }
 
 h2{

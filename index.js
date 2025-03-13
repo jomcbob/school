@@ -8,7 +8,7 @@ function randomizeSeats() {
 
     let remainingStudents = [...studentNames];
     for (let i = remainingStudents.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
+        const j = Math.floor(Math.random() * (i + 1));
         [remainingStudents[i], remainingStudents[j]] = [remainingStudents[j], remainingStudents[i]]
     }
 
@@ -95,4 +95,4 @@ function sortSeatsAlphabetically() {
 
 setTimeout(function() {
     window.location.reload()
-}, 5000 * 10)
+}, 5000 * 10 )
