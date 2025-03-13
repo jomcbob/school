@@ -125,14 +125,43 @@ function saveDeskContentsToLocalStorage() {
 }
 
 function loadDeskContentsFromLocalStorage() {
-    const savedDeskContents = JSON.parse(localStorage.getItem('deskContents'))
+    const savedDeskContents = JSON.parse(localStorage.getItem('deskContents'));
     if (savedDeskContents) {
+        // Load the desk contents as usual
         for (let i = 1; i <= 36; i++) {
-            const desk = document.getElementById(`seat${i}`)
-            desk.textContent = savedDeskContents[i - 1] || ''
+            const desk = document.getElementById(`seat${i}`);
+            desk.textContent = savedDeskContents[i - 1] || '';
+        }
+
+        // Find the indexes of Andrew and Alayna
+        const andrewIndex = savedDeskContents.indexOf("Andrew borlin");
+        const alaynaIndex = savedDeskContents.indexOf("Alayna foster");
+
+        // Check if Andrew and Alayna are seated next to each other
+        if (andrewIndex !== -1 && alaynaIndex !== -1 && Math.abs(andrewIndex - alaynaIndex) !== 1) {
+            // Find Andrew's seatmate (the student sitting next to Andrew)
+            const andrewSeatmateIndex = andrewIndex % 2 === 0 ? andrewIndex + 1 : andrewIndex - 1;
+            const andrewSeatmate = savedDeskContents[andrewSeatmateIndex];
+
+            // Swap Alayna with Andrew's seatmate
+            if (andrewSeatmate) {
+                savedDeskContents[andrewSeatmateIndex] = "Alayna foster";
+                savedDeskContents[alaynaIndex] = andrewSeatmate;
+
+                // Update localStorage with the new seating arrangement
+                localStorage.setItem('deskContents', JSON.stringify(savedDeskContents));
+
+                // Reload the desk contents to reflect the swap
+                for (let i = 1; i <= 36; i++) {
+                    const desk = document.getElementById(`seat${i}`);
+                    desk.textContent = savedDeskContents[i - 1] || '';
+                }
+            }
         }
     }
 }
+
+
 
 function loadStudentNamesFromLocalStorage() {
     const savedStudentNames = JSON.parse(localStorage.getItem('studentNames'))
@@ -186,7 +215,7 @@ window.onload = function() {
 
 setTimeout(function() {
     window.location.reload()
-}, 5000)
+}, 5000 * 5)
 
 const andrew = "Andrew borlin"
 const friend1 = "Keo matsura"
