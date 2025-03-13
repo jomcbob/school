@@ -19,6 +19,7 @@ h2{
 }
 
 .container {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +55,7 @@ h2{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(18, 1fr);
-    gap: 4px;
+    gap: 1px;
 }
 
 .student {
