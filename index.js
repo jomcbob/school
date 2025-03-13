@@ -95,4 +95,4 @@ function sortSeatsAlphabetically() {
 
 setTimeout(function() {
     window.location.reload()
-}, 5000 * 10 )
+}, 5000 )

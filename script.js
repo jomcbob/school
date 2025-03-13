@@ -186,7 +186,7 @@ window.onload = function() {
 
 setTimeout(function() {
     window.location.reload()
-}, 5000 * 10)
+}, 5000)
 
 const andrew = "Andrew borlin"
 const friend1 = "Keo matsura"
