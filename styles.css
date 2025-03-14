@@ -33,17 +33,17 @@ h2{
 }
 
 .desk {
-    width: 19vh;  /* Adjust size for better fitting */
-    height: 15vh; /* Adjust size for better fitting */
+    width: 19vh; 
+    height: 15vh; 
     background-color: #f0f0f0;
     text-align: center;
     line-height: 30px;
-    border: 1px solid #ccc;
-    font-size: 20px;
+    border: 2px solid #ccc;
+    font-size: 3vh;
     overflow: hidden;
     text-overflow: ellipsis;
-    word-wrap: break-word;  /* Ensures long words will break and wrap */
-    word-break: break-word; /* Ensures that words break if necessary */
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .input-section {

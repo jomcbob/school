@@ -131,26 +131,6 @@ function loadDeskContentsFromLocalStorage() {
             const desk = document.getElementById(`seat${i}`);
             desk.textContent = savedDeskContents[i - 1] || '';
         }
-
-        const andrewIndex = savedDeskContents.indexOf(andrew);
-        const alaynaIndex = savedDeskContents.indexOf(friend3);
-
-        if (andrewIndex !== -1 && alaynaIndex !== -1 && Math.abs(andrewIndex - alaynaIndex) !== 1) {
-            const andrewSeatmateIndex = andrewIndex % 2 === 0 ? andrewIndex + 1 : andrewIndex - 1;
-            const andrewSeatmate = savedDeskContents[andrewSeatmateIndex];
-
-            if (andrewSeatmate) {
-                savedDeskContents[andrewSeatmateIndex] = friend3;
-                savedDeskContents[alaynaIndex] = andrewSeatmate;
-
-                localStorage.setItem('deskContents', JSON.stringify(savedDeskContents));
-
-                for (let i = 1; i <= 36; i++) {
-                    const desk = document.getElementById(`seat${i}`);
-                    desk.textContent = savedDeskContents[i - 1] || '';
-                }
-            }
-        }
     }
 }
 
