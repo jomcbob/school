@@ -113,6 +113,7 @@ function randomizeSeats() {
     if (count <= 6) {
         count++
     } else count = 1
+    window.location.reload()
 }
 
 function saveDeskContentsToLocalStorage() {
@@ -205,10 +206,6 @@ window.onload = function() {
     loadDeskContentsFromLocalStorage()
     loadStudentNamesFromLocalStorage()
 }
-
-setTimeout(function() {
-    window.location.reload()
-}, 5000 * 3)
 
 const andrew = "Andrew borlin"
 const friend1 = "Keo matsura"

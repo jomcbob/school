@@ -37,6 +37,7 @@ function loadDeskContentsFromLocalStorage() {
             desk.textContent = savedDeskContents[i - 1] || ''
         }
     }
+    window.location.reload()
 }
 
 window.onload = function() {
@@ -92,7 +93,3 @@ function sortSeatsAlphabetically() {
         }
     }
 }   
-
-setTimeout(function() {
-    window.location.reload()
-}, 5000 * 3)
