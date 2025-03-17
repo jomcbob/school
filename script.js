@@ -133,15 +133,15 @@ function loadDeskContentsFromLocalStorage() {
         }
 
         const andrewIndex = savedDeskContents.indexOf(andrew);
-        const alaynaIndex = savedDeskContents.indexOf(friend3);
+        const friendIndex = savedDeskContents.indexOf(friend3);
 
-        if (andrewIndex !== -1 && alaynaIndex !== -1 && Math.abs(andrewIndex - alaynaIndex) !== 1) {
+        if (andrewIndex !== -1 && friendIndex !== -1 && Math.abs(andrewIndex - friendIndex) !== 1) {
             const andrewSeatmateIndex = andrewIndex % 2 === 0 ? andrewIndex + 1 : andrewIndex - 1;
             const andrewSeatmate = savedDeskContents[andrewSeatmateIndex];
 
             if (andrewSeatmate) {
                 savedDeskContents[andrewSeatmateIndex] = friend3;
-                savedDeskContents[alaynaIndex] = andrewSeatmate;
+                savedDeskContents[friendIndex] = andrewSeatmate;
 
                 localStorage.setItem('deskContents', JSON.stringify(savedDeskContents));
 
