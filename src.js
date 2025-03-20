@@ -42,15 +42,9 @@ function randomizeSeats() {
         if (pair.length === 0) {
             if (count === 1 && indexfriend3 > -1 && indexAndrew > -1) {
                 pair = [andrew, friend3]
-                console.log(friend3)
-                console.log(count)
             } else if (count === 4 && indexfriend4 > -1 && indexAndrew > -1) {
                 pair = [andrew, friend4]
-                console.log(friend4)
-                console.log(count)
             } else {
-                console.log('random')
-                console.log(count)
             }
         }
     }
@@ -174,7 +168,6 @@ window.onload = function() {
     } else {
         count = 1
     }
-    console.log(count)
 }
 
 const andrew = "Andrew borlin"
