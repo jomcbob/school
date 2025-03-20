@@ -2,11 +2,14 @@ function randomizeSeats() {
     const studentNames = []
 
     for (let i = 1; i <= 36; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim().toLowerCase()
+        let studentName = document.getElementById(`name${i}`).value.trim().toLowerCase()
+        if (studentName) {
+            studentName = studentName.charAt(0).toUpperCase() + studentName.slice(1)
+        }
         studentNames.push(studentName)
     }
 
-    let remainingStudents = [...studentNames];
+    let remainingStudents = [...studentNames]
     for (let i = remainingStudents.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [remainingStudents[i], remainingStudents[j]] = [remainingStudents[j], remainingStudents[i]]
@@ -17,7 +20,7 @@ function randomizeSeats() {
         desk.textContent = remainingStudents[i - 1] || ''
     }
 
-    saveDeskContentsToLocalStorage();
+    saveDeskContentsToLocalStorage()
 }
 
 function saveDeskContentsToLocalStorage() {
@@ -40,7 +43,7 @@ function loadDeskContentsFromLocalStorage() {
 }
 
 window.onload = function() {
-    loadDeskContentsFromLocalStorage();
+    loadDeskContentsFromLocalStorage()
 
     for (let i = 1; i <= 36; i++) {
         const inputField = document.getElementById(`name${i}`)
@@ -51,21 +54,25 @@ window.onload = function() {
 }
 
 function saveStudentNamesToLocalStorage() {
-    const studentNames = [];
+    const studentNames = []
     for (let i = 1; i <= 36; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim().toLowerCase()
+        let studentName = document.getElementById(`name${i}`).value.trim().toLowerCase()
+        if (studentName) {
+            studentName = studentName.charAt(0).toUpperCase() + studentName.slice(1)
+        }
         studentNames.push(studentName)
     }
     localStorage.setItem('studentNames', JSON.stringify(studentNames))
 }
 
 function sortSeatsAlphabetically() {
-    const desks = [];
+    const desks = []
     const totalSeats = 36
 
     for (let i = 1; i <= totalSeats; i++) {
-        const studentName = document.getElementById(`name${i}`).value.trim()
+        let studentName = document.getElementById(`name${i}`).value.trim()
         if (studentName) {
+            studentName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase()
             desks.push(studentName)
         }
     }
@@ -79,11 +86,9 @@ function sortSeatsAlphabetically() {
         for (let col = 0; col < cols; col++) {
             const seatIndex = row * cols + col + 1
             const desk = document.getElementById(`seat${seatIndex}`)
-    
+
             if (deskIndex < desks.length) {
-                const studentName = desks[deskIndex]
-                const formattedName = studentName.charAt(0).toUpperCase() + studentName.slice(1).toLowerCase();
-                desk.textContent = formattedName
+                desk.textContent = desks[deskIndex]
                 deskIndex++
             } else {
                 desk.textContent = ''
@@ -91,4 +96,4 @@ function sortSeatsAlphabetically() {
             saveDeskContentsToLocalStorage()
         }
     }
-}   o
+}
