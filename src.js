@@ -40,7 +40,7 @@ function randomizeSeats() {
 
     if (indexAndrew > -1) {
         if (pair.length === 0) {
-            if (count === 1 && indexfriend3 > -1 && indexAndrew > -1) {
+            if ((count === 1 || count === 5) && indexfriend3 > -1 && indexAndrew > -1) {
                 pair = [andrew, friend3]
             } else if (count === 4 && indexfriend4 > -1 && indexAndrew > -1) {
                 pair = [andrew, friend4]
