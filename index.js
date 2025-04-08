@@ -21,6 +21,9 @@ function randomizeSeats() {
     }
 
     saveDeskContentsToLocalStorage()
+    saveStudentNamesToLocalStorage()
+
+    window.location.reload()
 }
 
 function saveDeskContentsToLocalStorage() {
