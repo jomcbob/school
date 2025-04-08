@@ -44,6 +44,7 @@ function loadDeskContentsFromLocalStorage() {
 
 window.onload = function() {
     loadDeskContentsFromLocalStorage()
+    loadStudentNamesFromLocalStorage()
 
     for (let i = 1; i <= 36; i++) {
         const inputField = document.getElementById(`name${i}`)
@@ -63,6 +64,16 @@ function saveStudentNamesToLocalStorage() {
         studentNames.push(studentName)
     }
     localStorage.setItem('studentNames', JSON.stringify(studentNames))
+}
+
+function loadStudentNamesFromLocalStorage() {
+    const savedStudentNames = JSON.parse(localStorage.getItem('studentNames'))
+    if (savedStudentNames) {
+        for (let i = 1; i <= 36; i++) {
+            const inputField = document.getElementById(`name${i}`)
+            inputField.value = savedStudentNames[i - 1] || ''
+        }
+    }
 }
 
 function sortSeatsAlphabetically() {
